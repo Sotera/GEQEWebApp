@@ -1,3 +1,4 @@
+var debug = require('debug')('server');
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
@@ -6,6 +7,9 @@ var expressSession = require('express-session');
 var bodyParser = require('body-parser');
 
 var app = express();
+
+// handle server listen port this way for now
+app.set('port', process.env.PORT || 3001);
 
 just_include=require('just_include')(__dirname);
 
@@ -45,4 +49,8 @@ app.use(function (req, res, next) {
 	next(err);
 });
 
-module.exports = app;
+// and let's get things started
+var server = app.listen(app.get('port'), function() {
+  app.emit('started');
+  debug('Express server listening on port ' + server.address().port);
+});
