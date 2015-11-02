@@ -5,7 +5,7 @@ var netHelpers = just_include('netHelpers');
 
 router.delete('/delete/:vp', function(req,res){
     var sitelist = req.params.vp;
-    netHelpers.performAjaxRequest("localhost", 5500, '/api/sitelists/'+sitelist , 'DELETE',{}, function (resultObject) {
+    netHelpers.performLoopbackAjaxRequest('/api/sitelists/'+sitelist , 'DELETE',{}, function (resultObject) {
         if (resultObject.error) {
             res.status(resultObject.error.status).send(resultObject.error.message);
             return;
@@ -16,11 +16,11 @@ router.delete('/delete/:vp', function(req,res){
 
 router.get('/list/:vp', function (req, res) {
     var username = req.params.vp;
-    var query = {"filter[where][username]": username, "filter[fields][name]":true, "filter[fields][id]":true}
+    var query = {"filter[where][username]": username, "filter[fields][name]":true, "filter[fields][id]":true};
 
-    netHelpers.performAjaxRequest('localhost', 5500, '/api/sitelists', 'GET',query,function (resultObject) {
+    netHelpers.performLoopbackAjaxRequest('/api/sitelists', 'GET',query,function (resultObject) {
         if (resultObject.error) {
-            console.error(resultObject.error)
+            console.error(resultObject.error);
             res.status(resultObject.error.status).send(resultObject.error.message);
             return;
         }
@@ -30,11 +30,11 @@ router.get('/list/:vp', function (req, res) {
 
 
 router.get('/get/:vp', function (req, res) {
-    var modelId = req.params.vp
-    console.log("SITELISTS GET id ",modelId)
-    netHelpers.performAjaxRequest('localhost', 5500, '/api/sitelists/'+modelId, 'GET',null,function (resultObject) {
+    var modelId = req.params.vp;
+    console.log("SITELISTS GET id ",modelId);
+    netHelpers.performLoopbackAjaxRequest('/api/sitelists/'+modelId, 'GET',null,function (resultObject) {
         if (resultObject.error) {
-            console.error(resultObject.error)
+            console.error(resultObject.error);
             res.status(resultObject.error.status).send(resultObject.error.message);
             return;
         }
@@ -43,9 +43,9 @@ router.get('/get/:vp', function (req, res) {
 });
 
 router.post('/save', function (req, res) {
-    console.log("SITELIST/save POST")
-    var sitelist = JSON.parse(req.query.siteList)
-    netHelpers.performAjaxRequest('localhost', 5500, '/api/sitelists' , 'PUT', sitelist,function (resultObject) {
+    console.log("SITELIST/save POST");
+    var sitelist = JSON.parse(req.query.siteList);
+    netHelpers.performLoopbackAjaxRequest('/api/sitelists' , 'PUT', sitelist,function (resultObject) {
         if (resultObject.error) {
             res.status(resultObject.error.status).send(resultObject.error.message);
             return;

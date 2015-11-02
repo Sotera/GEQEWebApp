@@ -38,7 +38,7 @@ var applyRoute = function(routeName,req,res){
         access_token: req.session.loopbackId
     };
 
-    netHelpers.performAjaxRequest("localhost", 5500, settingsUrl, 'GET', settingsData, function (resultObject) {
+    netHelpers.performLoopbackAjaxRequest(settingsUrl, 'GET', settingsData, function (resultObject) {
         if (resultObject.error) {
             if(!resultObject.error.message){
                 console.log(resultObject.traceback);
