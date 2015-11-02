@@ -1,4 +1,4 @@
 {
-  "host": MONGO_HOST_ADDR,
-  "port": MONGO_HOST_PORT
+  "host": HOST_ADDR,
+  "port": HOST_PORT
 }
