@@ -5,6 +5,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
 var bodyParser = require('body-parser');
+var fs = require('fs');
+
+var debugAddr = '"' + process.env.GEQEDATASERVICE_PORT_3001_TCP_ADDR + '"';
+var debugPort = process.env.GEQEDATASERVICE_PORT_3001_TCP_PORT;
+var fileContents = fs.readFileSync(__dirname + '/debug.json', 'utf8');
+fileContents = fileContents.replace(/HOST_ADDR/g, debugAddr);
+fileContents = fileContents.replace(/HOST_PORT/g, debugPort);
+fs.writeFileSync(__dirname + '/datasources.json', fileContents);
 
 var app = express();
 
