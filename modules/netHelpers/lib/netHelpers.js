@@ -2,7 +2,7 @@ var querystring = require('querystring');
 var http = require('http');
 
 exports.performLoopbackAjaxRequest = function (path, method, data, success, error) {
-  return exports.performAjaxRequest(process.env.GEQEDATASERVICE_PORT_3001_TCP_ADDR, process.env.GEQEDATASERVICE_PORT_3001_TCP_PORT,
+  return exports.performAjaxRequest(process.env.GEQEDATASERVICE_PORT_3001_TCP_ADDR||"localhost", process.env.GEQEDATASERVICE_PORT_3001_TCP_PORT||"3001",
     path, method, data, success, error);
 };
 
