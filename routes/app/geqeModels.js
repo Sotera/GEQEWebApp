@@ -7,7 +7,7 @@ router.get('/list/:vp', function (req, res) {
     var username = req.params.vp
     var query = {"filter[where][username]": username}
 
-    netHelpers.performLoopbackAjaxRequest('/api/geqeModels', 'GET',query,function (resultObject) {
+    netHelpers.geqeRequest('/api/geqeModels', 'GET',query,function (resultObject) {
         if (resultObject.error) {
             console.error(resultObject.error);
             res.status(resultObject.error.status).send(resultObject.error.message);

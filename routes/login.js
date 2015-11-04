@@ -3,7 +3,7 @@ var router = express.Router();
 var netHelpers = require('../lib/net-helpers');
 
 var login = function login (req, res) {
-  netHelpers.performLoopbackAjaxRequest('/api/users/login', 'POST', req.body, function (result) {
+  netHelpers.geqeRequest('/api/users/login', 'POST', req.body, function (result) {
     if (result.error) {
       res.status(result.error.status).send('Unauthorized');
       return;
@@ -21,7 +21,7 @@ router.get('/', function (req, res) {
 router.post('/', login);
 
 router.post('/signup', function (req, res) {
-  netHelpers.performLoopbackAjaxRequest('/api/users', 'POST', req.body, function (result) {
+  netHelpers.geqeRequest('/api/users', 'POST', req.body, function (result) {
     if (result.error) {
       res.status(result.error.status).send(result.error.message);
       return;

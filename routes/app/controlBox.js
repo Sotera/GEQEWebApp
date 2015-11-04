@@ -5,7 +5,7 @@ var netHelpers = require('../../lib/net-helpers');
 
 var makeServiceCall = function(req,res,routeName, serviceHostName, servicePort){
 
-    netHelpers.performAjaxRequest(serviceHostName, servicePort, '/' + routeName, 'GET', req.query, function (resultObject) {
+    netHelpers.request(serviceHostName, servicePort, '/' + routeName, 'GET', req.query, function (resultObject) {
         if (resultObject.error) {
             if(!resultObject.error.message){
                 console.log(resultObject.traceback);
@@ -38,7 +38,7 @@ var applyRoute = function(routeName,req,res){
         access_token: req.session.loopbackId
     };
 
-    netHelpers.performLoopbackAjaxRequest(settingsUrl, 'GET', settingsData, function (resultObject) {
+    netHelpers.geqeRequest(settingsUrl, 'GET', settingsData, function (resultObject) {
         if (resultObject.error) {
             if(!resultObject.error.message){
                 console.log(resultObject.traceback);

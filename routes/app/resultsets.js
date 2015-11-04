@@ -8,7 +8,7 @@ router.get('/:vp', function (req, res) {
 
     var resultsetId = req.params.vp;
 
-    netHelpers.performLoopbackAjaxRequest('/api/resultsets/' + resultsetId, 'GET',null,function (resultObject) {
+    netHelpers.geqeRequest('/api/resultsets/' + resultsetId, 'GET',null,function (resultObject) {
         if (resultObject.error) {
             console.error(resultObject.error);
             res.status(resultObject.error.status).send(resultObject.error.message);

@@ -8,7 +8,7 @@ version = json.version;
 
 
 router.get('/:vp', function (req, res) {
-    netHelpers.performLoopbackAjaxRequest('/api/users' + req.url, 'GET', null,function (resultObject) {
+    netHelpers.geqeRequest('/api/users' + req.url, 'GET', null,function (resultObject) {
         if (resultObject.error) {
             res.status(resultObject.error.status).send(resultObject.error.message);
             return;
@@ -19,7 +19,7 @@ router.get('/:vp', function (req, res) {
 });
 
 router.post('/:vp', function (req, res) {
-    netHelpers.performLoopbackAjaxRequest('/api/users' + req.url, 'PUT', req.body,function (resultObject) {
+    netHelpers.geqeRequest('/api/users' + req.url, 'PUT', req.body,function (resultObject) {
         if (resultObject.error) {
             res.status(resultObject.error.status).send(resultObject.error.message);
             return;

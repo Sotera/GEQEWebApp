@@ -9,7 +9,7 @@ router.get('/:vp', function (req, res) {
     var username = req.query.username;
     var query = {"filter[where][username]": username};
 
-    netHelpers.performLoopbackAjaxRequest('/api/jobs/'+jobId, 'GET',query,function (resultObject) {
+    netHelpers.geqeRequest('/api/jobs/'+jobId, 'GET',query,function (resultObject) {
         if (resultObject.error) {
             console.error(resultObject.error);
             res.status(resultObject.error.status).send(resultObject.error.message);
@@ -25,7 +25,7 @@ router.delete('/:vp', function (req, res) {
     var username = req.query.username;
     var query = {"filter[where][username]": username};
 
-    netHelpers.performLoopbackAjaxRequest('/api/jobs/'+jobId, 'DELETE',query,function (resultObject) {
+    netHelpers.geqeRequest('/api/jobs/'+jobId, 'DELETE',query,function (resultObject) {
         if (resultObject.error) {
             console.error(resultObject.error);
             res.status(resultObject.error.status).send(resultObject.error.message);
@@ -39,7 +39,7 @@ router.get('/', function (req, res) {
     var username = req.query.username;
     var query = {"filter[where][username]": username};
 
-    netHelpers.performLoopbackAjaxRequest('/api/jobs', 'GET',query,function (resultObject) {
+    netHelpers.geqeRequest('/api/jobs', 'GET',query,function (resultObject) {
         if (resultObject.error) {
             console.error(resultObject.error);
             res.status(resultObject.error.status).send(resultObject.error.message);
@@ -54,7 +54,7 @@ router.get('/', function (req, res) {
 router.post('/', function (req, res) {
 
     var job = req.query;
-    netHelpers.performLoopbackAjaxRequest('/api/jobs' , 'PUT',job,function (resultObject) {
+    netHelpers.geqeRequest('/api/jobs' , 'PUT',job,function (resultObject) {
         if (resultObject.error) {
             res.status(resultObject.error.status).send(resultObject.error.message);
             return;

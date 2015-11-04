@@ -44,7 +44,7 @@ router.post('/bin', function (req, res) {
     }
     query["query"]["filtered"]["filter"] =  filter
 
-    netHelpers.performAjaxRequest(ES_HOST, ES_PORT, '/geqe/post/_search', 'POST',query,function (resultObject) {
+    netHelpers.request(ES_HOST, ES_PORT, '/geqe/post/_search', 'POST',query,function (resultObject) {
         if (resultObject.error) {
             res.status(resultObject.status).send(resultObject.error);
             return;
@@ -93,7 +93,7 @@ router.post('/resultset', function (req, res) {
     }
     query["query"]["filtered"]["filter"] =  {"bool": { "should" : filters}};
 
-    netHelpers.performAjaxRequest(ES_HOST, ES_PORT, '/geqe/post/_search', 'POST',query,function (resultObject) {
+    netHelpers.request(ES_HOST, ES_PORT, '/geqe/post/_search', 'POST',query,function (resultObject) {
         if (resultObject.error) {
             res.status(resultObject.status).send(resultObject.error);
             return;
@@ -135,7 +135,7 @@ router.post('/sitelist', function (req, res) {
     }
     query["query"]["filtered"]["filter"] =  {"bool": { "should" : filters}};
 
-    netHelpers.performAjaxRequest(ES_HOST, ES_PORT, '/geqe/post/_search', 'POST',query,function (resultObject) {
+    netHelpers.request(ES_HOST, ES_PORT, '/geqe/post/_search', 'POST',query,function (resultObject) {
         if (resultObject.error) {
             console.error(resultObject)
             res.status(resultObject.status).send(resultObject.error);
