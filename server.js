@@ -50,5 +50,5 @@ app.use(function (req, res, next) {
 // and let's get things started
 var server = app.listen(app.get('port'), function() {
   app.emit('started');
-  debug('Express server listening on port ' + server.address().port);
+  console.log('Express server listening on port ' + server.address().port);
 });
