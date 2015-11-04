@@ -1,4 +1,4 @@
-angular.module('NodeWebBase')
+angular.module('GEQE')
     .controller('tableTabsController', ['$scope','$rootScope','$http','$timeout','$cookies', function ($scope, $rootScope, $http, $timeout, $cookies) {
         $scope.tabs = [{
             title: 'Jobs',

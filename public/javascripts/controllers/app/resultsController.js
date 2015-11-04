@@ -1,4 +1,4 @@
-angular.module('NodeWebBase')
+angular.module('GEQE')
     .controller('resultsController',['$scope','$sce','$rootScope','$timeout',function ($scope, $sce, $rootScope,$timeout) {
         $scope.masterCollection = [];
         $scope.rowCollection = [];

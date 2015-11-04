@@ -1,4 +1,4 @@
-angular.module('NodeWebBase')
+angular.module('GEQE')
     .filter('dateParse', function($filter) {
         return function(input,format,timezone) {
             return (!!input) ? $filter('date')( Date.parse(input), format, timezone) : '';

@@ -1,5 +1,5 @@
 
-angular.module('NodeWebBase')
+angular.module('GEQE')
     .service('shapeService', ['$rootScope', '$http','ngDialog','themeChangedMsg','toggleEditMsg','setSelectionMsg',function ($rootScope, $http, ngDialog,themeChangedMsg,toggleEditMsg,setSelectionMsg) {
         var me = this;
         me.shapes = {

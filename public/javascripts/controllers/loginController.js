@@ -1,4 +1,4 @@
-angular.module('NodeWebBase')
+angular.module('GEQE')
   .constant('authUrl', '/login')
   .controller('loginController', ['$scope', '$http', '$window', '$cookies', 'ngDialog', 'authUrl', 'authService',
     function ($scope, $http, $window, $cookies, ngDialog, authUrl, authService) {

@@ -1,4 +1,4 @@
-angular.module('NodeWebBase')
+angular.module('GEQE')
     .directive('userLog',['userLoggingService', function (userLoggingService) {
         function link(scope, element, attrs) {
 

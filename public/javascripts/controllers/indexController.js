@@ -1,4 +1,4 @@
-angular.module('NodeWebBase')
+angular.module('GEQE')
 		.config(['$routeProvider', '$compileProvider', function ($routeProvider, $compileProvider) {
 			$routeProvider
 			.otherwise({templateUrl: '/views/app/main'});

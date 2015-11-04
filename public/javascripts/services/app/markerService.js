@@ -1,5 +1,5 @@
 
-angular.module('NodeWebBase')
+angular.module('GEQE')
     .service('markerService', ['$rootScope','applyFilterMsg','itemDetailsLoadedMsg',function ($rootScope,applyFilterMsg,itemDetailsLoadedMsg) {
         var me = this;
         me.map = null;

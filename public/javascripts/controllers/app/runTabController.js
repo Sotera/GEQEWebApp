@@ -1,7 +1,7 @@
 /**
  * Created by jlueders on 4/13/15.
  */
-angular.module('NodeWebBase')
+angular.module('GEQE')
     .controller('runTabController', ['$scope', '$rootScope', '$http','setSelectionMsg', function ($scope, $rootScope, $http, setSelectionMsg) {
 
         $scope.jobs = [];

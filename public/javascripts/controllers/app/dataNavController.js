@@ -1,4 +1,4 @@
-angular.module('NodeWebBase')
+angular.module('GEQE')
     .controller('dataNavController', ['$scope','$rootScope', '$filter', function ($scope, $rootScope, $filter) {
         $scope.scopeName = 'dataNavController';
         $scope.catalog = [];

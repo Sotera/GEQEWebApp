@@ -1,4 +1,4 @@
-angular.module('NodeWebBase')
+angular.module('GEQE')
   .service('authService', ['$cookies', function ($cookies) {
     this.setCookies = function (res, data) {
       $cookies.userId = res.userId;

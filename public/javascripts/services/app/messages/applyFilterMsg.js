@@ -1,4 +1,4 @@
-angular.module('NodeWebBase')
+angular.module('GEQE')
     .service('applyFilterMsg', ['$rootScope',function ($rootScope) {
 
         this.broadcast = function broadcast() {

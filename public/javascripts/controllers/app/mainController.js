@@ -1,4 +1,4 @@
-angular.module('NodeWebBase')
+angular.module('GEQE')
     .constant('userUrl', 'app/users')
     .controller('mainController', ['$scope', '$rootScope', '$http', '$cookies', 'ngDialog','changeThemeMsg','setFullNameMsg',
         function ($scope, $rootScope, $http, $cookies, ngDialog,changeThemeMsg, setFullNameMsg) {

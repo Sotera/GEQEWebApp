@@ -1,7 +1,7 @@
 /**
  * Created by jlueders on 4/13/15.
  */
-angular.module('NodeWebBase')
+angular.module('GEQE')
     .controller('dataSetController', ['$scope','$rootScope','$http','toggleEditMsg','setSelectionMsg', function ($scope, $rootScope, $http, toggleEditMsg,setSelectionMsg) {
 
         $scope.jobs = [];

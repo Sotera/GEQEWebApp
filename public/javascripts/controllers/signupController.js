@@ -1,4 +1,4 @@
-angular.module('NodeWebBase')
+angular.module('GEQE')
   .constant('signupUrl', '/login/signup')
   .controller('signupController', ['$scope', '$http', '$window', '$cookies', 'signupUrl', 'authService',
     function ($scope, $http, $window, $cookies, signupUrl, authService) {

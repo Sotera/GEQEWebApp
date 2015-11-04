@@ -1,4 +1,4 @@
-angular.module('NodeWebBase')
+angular.module('GEQE')
     .controller('mapController',['$scope','$rootScope','shapeService','markerService','themeChangedMsg','toggleEditMsg',
         function($scope, $rootScope, shapeService, markerService,themeChangedMsg,toggleEditMsg){
         themeChangedMsg.listen(function (event) {

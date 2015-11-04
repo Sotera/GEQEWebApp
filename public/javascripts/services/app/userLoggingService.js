@@ -1,5 +1,5 @@
 
-angular.module('NodeWebBase')
+angular.module('GEQE')
     .service('userLoggingService', ['$rootScope',function ($rootScope) {
         var me = this;
         me.userale = null;

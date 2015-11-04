@@ -1,4 +1,4 @@
-angular.module('NodeWebBase')
+angular.module('GEQE')
     .service('themeChangedMsg', ['$rootScope',function ($rootScope) {
 
         this.broadcast = function broadcast() {
