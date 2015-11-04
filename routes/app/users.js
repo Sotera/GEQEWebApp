@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var netHelpers = require('../../lib/net-helpers');
+var netHelpers = require('../../lib/netHelpers');
 var fs = require('fs');
 
 json = JSON.parse(fs.readFileSync('package.json', 'utf8'));

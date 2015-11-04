@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var netHelpers = require('../../lib/net-helpers');
+var netHelpers = require('../../lib/netHelpers');
 
 
 router.get('/', function (req, res) {
