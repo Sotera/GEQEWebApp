@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var netHelpers = just_include('netHelpers');
+var netHelpers = require('../../lib/net-helpers');
 
 var config = require("../../config.json")
 var ES_HOST = config.es_host

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var netHelpers = just_include('netHelpers');
+var netHelpers = require('../../lib/net-helpers');
 
 router.delete('/delete/:vp', function(req,res){
     var sitelist = req.params.vp;

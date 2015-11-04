@@ -11,9 +11,6 @@ var app = express();
 
 // handle server listen port this way for now
 app.set('port', process.env.PORT || 3001);
-
-just_include=require('just_include')(__dirname);
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

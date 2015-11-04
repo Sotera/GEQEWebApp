@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var netHelpers = just_include('netHelpers');
+var netHelpers = require('../lib/net-helpers');
 
 var login = function login (req, res) {
   netHelpers.performLoopbackAjaxRequest('/api/users/login', 'POST', req.body, function (result) {
