@@ -23,22 +23,22 @@
         .form-group.form-group-sm
             label(for='pFileName') Polygon Set
             .input-group-sm
-                select.form-control( ng-options="item.name for item in polygonFiles | orderBy:'name'" ng-model="polygonSetSelected" ng-disabled='editing')
+                select#polySetSelect.form-control( ng-options="item.name for item in polygonFiles | orderBy:'name' track by item.id" ng-model="polygonSetSelected" ng-disabled='editing')
                     option(value="") --Select--
             a.text-left(href="", data-toggle="collapse", data-target="#newPolySet", ng-disabled='editing')
-                    | new polyset
+                | new polyset
             i.pull-right
                 button.btn.btn-default.btn-xs.glyphicon.glyphicon-pencil(ng-click="showEditingTools()" ng-class="{'disabled': !polygonSetSelected, 'btn-info': editing }" title="Draw polygons to the map." user-log elementtype='BUTTON' loggroup='run_tab' logtags='draw,training_file')
             i.pull-right
                 button.btn.btn-default.btn-xs.glyphicon.glyphicon-trash(ng-click="removePolySet()" ng-class="{'disabled': !polygonSetSelected && !editing }" title="Delete the polygon set." user-log elementtype='BUTTON' loggroup='run_tab' logtags='draw,training_file')
 
 
-          .form-group.form-group-sm.collapse(id="newPolySet")
-                .input-group.input-group-sm
-                    input.form-control(placeholder="name", ng-model="newPolySetName", id="newPolySetInput")
-                    span.input-group-btn
-                        button.btn.btn-default(ng-click="saveNewItem()" id="savePolygon" title="Save." user-log elementtype='BUTTON' loggroup='run_tab' logtags='refresh,training_file')
-                            | Save
+          #newPolySet.form-group.form-group-sm.collapse
+              .input-group.input-group-sm
+                  input.form-control(placeholder="name" ng-model="newPolySetName")
+                  span.input-group-btn
+                      button.btn.btn-default(ng-click="saveNewItem()" id="savePolygon" title="Save" user-log elementtype='BUTTON' loggroup='run_tab' logtags='refresh,training_file')
+                          | Save
     br
     .row
       .col-sm-12(role="navigation")
