@@ -1,10 +1,13 @@
 angular.module('GEQE')
   .constant('authUrl', '/login')
-  .controller('loginController', ['$scope', '$http', '$window', '$cookies', 'ngDialog', 'authUrl', 'authService',
-    function ($scope, $http, $window, $cookies, ngDialog, authUrl, authService) {
+  .controller('loginController', ['$scope', '$http', '$window', '$cookies', 'authUrl', 'authService',
+    function ($scope, $http, $window, $cookies, authUrl, authService) {
+
+      //HACK: default user/pass for demos
       $scope.data = {
         rememberMe: $cookies.rememberMe === 'true',
-        username: $cookies.rememberMe === 'true' ? $cookies.lastUsername || '' : ''
+        username: 'demo',
+        password: 'demo'
       };
 
       $scope.authenticationError = false;
@@ -22,4 +25,7 @@ angular.module('GEQE')
             $scope.authenticationError = true;
           });
       }
+
+      //HACK: bypass login for demos: auto-authenticates with pre-configured user data above
+      $scope.authenticate()
   }]);
