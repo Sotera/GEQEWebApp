@@ -224,7 +224,7 @@ function getMatchQuery(query_string){
 function getDateRangeFilters(dateRanges){
     var dateFilters = []
     for (var i in dateRanges){
-        var min = dateRanges[i]["min"].split("T")[0]+"T00:00:01"
+        var min = dateRanges[i]["min"].split("T")[0]+"T00:00:00"
         var max = dateRanges[i]["max"].split("T")[0]+"T23:59:59"
         dateFilters.push({"range": {"post_date": {"gte":min, "lte":max } } } )
     }
