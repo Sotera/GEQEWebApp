@@ -19,7 +19,8 @@ angular.module('GEQE')
           .success(function (res) {
             $scope.authenticationError = false;
             authService.setCookies(res, $scope.data);
-            $window.location.href = '/';
+            // pass thru search params (for userale)
+            $window.location.href = '/' + $window.location.search;
           })
           .error(function (error) {
             $scope.authenticationError = true;
