@@ -6,6 +6,7 @@ var netHelpers = require('../../lib/netHelpers');
 var config = require("../../config.json")
 var ES_HOST = config.es_host
 var ES_PORT = config.es_port
+var ES_INDEX = config.es_index || "/geqe/post/"
 
 
 
@@ -44,7 +45,7 @@ router.post('/bin', function (req, res) {
     }
     query["query"]["filtered"]["filter"] =  filter
 
-    netHelpers.request(ES_HOST, ES_PORT, '/geqe/post/_search', 'POST',query,function (resultObject) {
+    netHelpers.request(ES_HOST, ES_PORT, ES_INDEX + '_search', 'POST',query,function (resultObject) {
         if (resultObject.error) {
             res.status(resultObject.status).send(resultObject.error);
             return;
@@ -93,7 +94,7 @@ router.post('/resultset', function (req, res) {
     }
     query["query"]["filtered"]["filter"] =  {"bool": { "should" : filters}};
 
-    netHelpers.request(ES_HOST, ES_PORT, '/geqe/post/_search', 'POST',query,function (resultObject) {
+    netHelpers.request(ES_HOST, ES_PORT, ES_INDEX + '_search', 'POST',query,function (resultObject) {
         if (resultObject.error) {
             res.status(resultObject.status).send(resultObject.error);
             return;
@@ -135,7 +136,7 @@ router.post('/sitelist', function (req, res) {
     }
     query["query"]["filtered"]["filter"] =  {"bool": { "should" : filters}};
 
-    netHelpers.request(ES_HOST, ES_PORT, '/geqe/post/_search', 'POST',query,function (resultObject) {
+    netHelpers.request(ES_HOST, ES_PORT, ES_INDEX + '_search', 'POST',query,function (resultObject) {
         if (resultObject.error) {
             console.error(resultObject)
             res.status(resultObject.status).send(resultObject.error);
