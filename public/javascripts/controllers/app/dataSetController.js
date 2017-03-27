@@ -49,19 +49,16 @@ angular.module('GEQE')
         };
 
         //TODO: Needs to be deprecated and replaced with getPolygonSets
-        $scope.populatePolygonSelect = function() {
+        $scope.populatePolygonSelect = function(success) {
             if(!$rootScope.isAppConfigured())
                 return;
 
             $http({
                 method:"GET",
-                url: "app/sitelists/list/"+$rootScope.username,
-                params: {}
+                url: "app/sitelists/list/"+$rootScope.username
             }).success(function (response) {
-                while($scope.polygonFiles.length > response.length)
-                    $scope.polygonFiles.pop();
-
-                $.extend($scope.polygonFiles, response)
+                $scope.polygonFiles = response;
+                if (success) success();
             }).error($rootScope.showError);
         };
 
@@ -130,33 +127,41 @@ angular.module('GEQE')
                 });
         };
         $scope.saveNewItem = function saveNewItem(item) {
-            $rootScope.$emit("getShapesText",
-                {
-                    "scope":this,
-                    "callback":function(resultsText){
-                        if(!$rootScope.isAppConfigured())
-                            return;
-                        var pName = $scope.newPolySetName;
-                        var siteList = JSON.parse(resultsText);
-                        siteList.name = pName;
-                        siteList.username = $rootScope.username;
-                        var modelId = null;
-                        if (modelId) siteList.id = modelId;
+          $rootScope.$emit("getShapesText",
+            {
+              "scope":this,
+              "callback":function(resultsText){
+                if(!$rootScope.isAppConfigured())
+                    return;
+                var pName = $scope.newPolySetName;
+                var siteList = JSON.parse(resultsText);
+                siteList.name = pName;
+                siteList.username = $rootScope.username;
+                var modelId = null;
+                if (modelId) siteList.id = modelId;
 
-                        $http({
-                            method:"POST",
-                            url: "app/sitelists/save",
-                            params: {
-                                siteList: siteList
-                            }}).success(function (response) {
-                            //RESET
-                            $("#newPolySet").toggleClass("in");
-                            $("#newPolySetInput").val("");
-                            $("#resultsText").text(pName + " written");
-                            $scope.populatePolygonSelect(); // refresh the polygon list to get the new id
-                        }).error($rootScope.showError)
+                $http({
+                  method:"POST",
+                  url: "app/sitelists/save",
+                  params: {
+                    siteList: siteList
+                  }})
+                .success(function (response) {
+                  //RESET
+                  $("#newPolySet").toggleClass("in");
+                  $scope.newPolySetName = "";
+                  // $("#resultsText").text(pName + " written");
+                   // refresh the polygon list
+                  $scope.populatePolygonSelect(
+                    function selectNew() {
+                      $scope.polygonSetSelected = _.detect($scope.polygonFiles,
+                        function(item) {return item.id == response.id});
                     }
-                });
+                  );
+                })
+                .error($rootScope.showError)
+              }
+            });
         };
         $scope.saveItem = function saveItem(item) {
             $rootScope.$emit("getShapesText",
@@ -177,13 +182,15 @@ angular.module('GEQE')
                             url: "app/sitelists/save",
                             params: {
                                 siteList: siteList
-                            }}).success(function (response) {
+                            }})
+                        .success(function (response) {
                             //RESET
                             $("#newPolySet").toggleClass("in");
-                            $("#newPolySetInput").val("");
-                            $("#resultsText").text(pName + " written");
+                            $scope.newPolySetName = "";
+                            // $("#resultsText").text(pName + " written");
                             $scope.populatePolygonSelect(); // refresh the polygon list to get the new id
-                        }).error($rootScope.showError)
+                        })
+                        .error($rootScope.showError)
                     }
                 });
         };
